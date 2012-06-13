@@ -1,0 +1,51 @@
+/* 
+Author: Nick Clawson
+Date: 6/2/2012
+VFW1206 Project: Coaster Rater
+*/
+
+body{
+	background: #00DDFF;
+	font-family: arial;
+	letter-spacing: .07em;
+}
+
+h1{
+	font-style: italic;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+h2{
+	font-style: italic;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+
+legend {
+	text-align: center;
+	font-weight: bold;
+	color: #FF3300
+}
+
+li {
+	color: #FF3300;
+	line-height: 1.2em;
+}
+
+form {
+	background: #00EDFF;
+	width: 90%;
+	margin-left: 10px;
+
+}
+
+fieldset{
+	border: 1px solid #FFBB00;
+}
+
+a {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+

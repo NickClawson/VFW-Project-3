@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<!--above declares doctype as HTML-->
+<!--Author: Nick Clawson-->
+<!--Date: 6/20/12-->
+<!--VFW1206 Project: Coaster Rater-->
+<html> <!--begins markup-->
+	<head> <!--contains information about the HTML doc-->
+		<meta charset="utf-8"> <!--defines the charset of the document-->
+		<meta name="description" content="Add a ride review." /> <!--description for website-->
+		<meta name="keywords" content="ride, coaster, review" /> <!--keywords for search engines-->
+		<meta name="robots" content="index, follow" /> <!--allows robot to index the page and follow links and map the website-->
+		<meta name="viewport" content="user-scalable=no, width=device-width" /> <!--sets width of page to default width of the device. user can't zoom-->
+		<script type="text/javascript" src="main.js"></script><!--Links main.js to this file.-->
+		<link href="styles.css" rel="stylesheet" /><!--links styles.css to this file-->
+		<title>Add a Ride</title> <!--displays title in between tags at top of window-->
+	</head> <!--closes head tag-->
+	<body> <!--contains content of page-->
+		<h1>Add a Ride</h1> <!--header-->
+		<form action="#" method="post" id="rideForm"><!--creates a form-->
+			<fieldset><!--creates one section of a form-->
+				<legend>Ride Information</legend><!--label for the field-->
+				<ul><!--creates a list of items-->
+					<li><label for="rname">Ride Name:</label><input type="text" id="rname" /></li><!--what's the ride name?-->
+					<li id="select">
+						<label for="parkLocation">Park Location:</label><br /></li><!--below creates drop down menu to select at which park the ride is located-->
+					<li>Type of Ride:<!--what kind of ride was it?-->
+						<ul><!--list of radio buttons below; roller coaster checked by default-->
+							<li><input type="radio" checked value="Roller Coaster" id="coaster" name="type"/><Label for="coaster">Roller Coaster</label></li>
+							<li><input type="radio" value="Thrill Ride" id="thrill" name="type" /><Label for="thrill">Thrill Ride</label></li>
+							<li><input type="radio" value="Water Ride" id="water" name="type" /><Label for="water">Water Ride</label></li>
+							<li><input type="radio" value="Haunted House" id="haunted" name="type" /><Label for="haunted">Haunted House</label></li>
+							<li><input type="radio" value="Train" id="train" name="type" /><Label for="train">Train</label></li>
+							<li><input type="radio" value="Transport" id="transport" name="type" /><Label for="transport">Transport</label></li>
+						</ul>
+					</li>
+					<li><label for="rating">Rating (Scale of 1-10):</label><br /><input type="range" name="rating" id="rating" min="1" max ="10" /></li><!--what did you think of the ride on scale of 1-10-->
+					<li><label for="date">Date of Ride:</label><input type="date" id="date" /></li><!--when did you ride it?-->
+					<li><label for="comments">Additional Comments:</label><br /><textarea id="comments"></textarea></li><!--text box for additional comments-->
+					<li><input type="hidden" value="true" /></li><!--hidden value, nothing iportant returned yet-->
+				</ul>
+			</fieldset>
+			<input type="submit" value="Rate it!" id="submit"/><!--button to submit above form. Does nothing yet-->
+		</form>
+		<ul>
+			<li><a href="#" id="displayLink">Display Data</a></li><!--displays all stored data, does nothing yet-->
+			<li><a href="#" id="clear">Clear Stored Data</a></li><!--clears stored data, does nothing yet-->
+			<li><a href="addItem.html" id="addNew" style="display:none;">Add New Item</a>
+		</ul>
+	</body> <!--ends content of page-->
+</html><!--ends markup-->
