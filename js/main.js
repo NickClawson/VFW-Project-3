@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Ride";
-		//editLink.addEventListener("click", editItem);
+		editLink.addEventListener("click", editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 
@@ -117,6 +117,43 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		//deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
+	};
+
+	function editItem(){
+		var value = localStorage.getItem(this.key);//gets data from current local storage values
+		var item = JSON.parse(value);
+		
+		toggleControls("off");//shows the form
+
+		//below populates the form with current local storage data
+		$("rname").value = item.ride[1];
+		$("locations").value = item.park[1];
+		var radios = document.forms[0].type;
+		for(var i = 0; i < radios.length; i++){
+			if(radios[i].value == "Roller Coaster" && item.type[1] == "Roller Coaster"){
+				radios[i].setAttribute("checked", "checked");
+			}
+			else if (radios[i].value == "Thrill Ride" && item.type[1] == "Thrill Ride"){
+				radios[i].setAttribute("checked", "checked");
+			}
+			else if (radios[i].value == "Water Ride" && item.type[1] == "Water Ride"){
+				radios[i].setAttribute("checked", "checked");
+			}
+			else if (radios[i].value == "Haunted House" && item.type[1] == "Haunted House"){
+				radios[i].setAttribute("checked", "checked");
+			}
+			else if (radios[i].value == "Train" && item.type[1] == "Train"){
+				radios[i].setAttribute("checked", "checked");
+			}
+			else if (radios[i].value == "Transport" && item.type[1] == "Transport"){
+				radios[i].setAttribute("checked", "checked");
+			}
+		};
+		$("rating").value = item.rating[1];
+		$("date").value = item.date[1];
+		$("comments").value = item.comments[1];
+
+
 	};
 
 	function clearLocal(){//function to clear local storage data
