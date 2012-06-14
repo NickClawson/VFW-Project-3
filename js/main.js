@@ -80,6 +80,7 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		$("items").style.display = "block";
 		for(var i = 0, j = localStorage.length; i < j; i++){//retrieving each item from local storage
 			var makeLi = document.createElement("li");
+			var linksLi = document.createElement("li");
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -91,8 +92,31 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = rideRating[n][0] + " " + rideRating[n][1];
 				makeSubLi.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
 			};
+			makeItemLinks(localStorage.key(i), linksLi); 
 		};
+	};
+
+	function makeItemLinks(key, linksLi){ //creates edit and delete links
+		var editLink = document.createElement("a");
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Ride";
+		//editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+
+		var breakTag = document.createElement("br");
+		linksLi.appendChild(breakTag);
+
+		var deleteLink = document.createElement("a");
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Ride";
+		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
 	};
 
 	function clearLocal(){//function to clear local storage data
