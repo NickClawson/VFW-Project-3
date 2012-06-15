@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Ride";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	};
@@ -166,6 +166,16 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 
 	};
 
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this ride?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			window.location.reload();
+		}
+		else{
+			alert("Ride has not been deleted.");
+		}
+	};
 	function clearLocal(){//function to clear local storage data
 		if(localStorage.length === 0){
 			alert("There is no data to clear!")
