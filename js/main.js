@@ -54,9 +54,14 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		}
 	};
 
-	function saveData(){ //function will add form data to local storage
+	function saveData(key){ //function will add form data to local storage
+		if (!key){//if no existing key, creates new item with new key
+			var id = Math.floor(Math.random() * 132145433);
+		}
+		else{//if existing key value, overwrites data to exising key
+			id = key;
+		}
 		getSelectedRadio();
-		var id = Math.floor(Math.random() * 132145433);
 		var storageItem = {};
 			storageItem.ride = ["Ride Name: ", $("rname").value];
 			storageItem.park = ["Park: ", $("locations").value];
@@ -224,7 +229,7 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 			return false;
 		}
 		else{ //saves data as normal if no errors
-			saveData();
+			saveData(this.key);
 		};
 
 	};
