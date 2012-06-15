@@ -1,6 +1,6 @@
 /*
 Author: Nick Clawson
-Date: 6/2/2012
+Date: 6/14/2012
 VFW 1206 Project: Coaster Rater */
 
 window.addEventListener("DOMContentLoaded", function(){ //This function waits until the DOM is ready to exectute
