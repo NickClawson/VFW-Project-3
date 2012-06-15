@@ -153,6 +153,11 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		$("date").value = item.date[1];
 		$("comments").value = item.comments[1];
 
+		save.removeEventListener("click", saveData); //removes initial submit event listener
+		$("submit").value = "Edit Ride"; //changes value of button to Edit Ride
+		var editSubmit = $("submit");
+		editSubmit.addEventListener("click", validate);//this line and below save key value as property of editSubmit
+		editSubmit.key = this.key;
 
 	};
 
@@ -168,10 +173,67 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		};
 	};
 
+	function validate(e){ //function to validate dorm data
+		//define which elements need validation
+		var getRide = $("rname");
+		var getPark = $("locations");
+		var getRating = $("rating");
+		var getDate = $("date");
+
+		//clears previous error messages
+		errorMessage.innerHTML = "";
+		getRide.style.border = "1px solid black";
+		getPark.style.border = "1px solid black";
+		getDate.style.border = "1px solid black";
+		getRating.style.border = "1px solid black";
+
+		var messageArr = [];
+
+		if(getRide.value === ""){ //checks ride name field
+			var rideError = "Please type a ride name.";
+			getRide.style.border = "1px solid red";
+			messageArr.push(rideError);
+		}
+
+		if(getPark.value === "--Choose a Park--"){ //checks park location selection
+			var parkError = "Please select a park location.";
+			getPark.style.border = "1px solid red";
+			messageArr.push(parkError);
+		}
+
+		if(getDate.value === ""){ //checks date field
+			var dateError = "Please select a date for the visit.";
+			getDate.style.border = "1px solid red";
+			messageArr.push(dateError);
+		}
+
+		var pattern = /^([1-9]|10)$/; //checks rating slider/field
+		if(!(pattern.exec(getRating.value))){
+			var ratingError = "Please select a value 1-10.";
+			getRating.style.border = "1px solid red";
+			messageArr.push(ratingError);
+		}
+
+		if(messageArr.length >= 1){ //if there are any errors, displays each error on page
+			for(var i = 0, j = messageArr.length; i < j; i++){
+				var errorText = document.createElement("li");
+				errorText.innerHTML = messageArr[i];
+				errorMessage.appendChild(errorText);
+			}
+			e.preventDefault();
+			return false;
+		}
+		else{ //saves data as normal if no errors
+			saveData();
+		};
+
+	};
+
 	//Default Variables
 	var rideLocation = ["--Choose a Park--", "Cedar Point", "King's Island","Kennywood","Hersheypark"];
 	var typeValue;
 	makeCategory();
+	errorMessage = $("errors");
 
 	//The below variales set link and submit button click events
 	var displayLink = $("displayLink");
@@ -179,5 +241,5 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 	var clearLink = $("clear");
 	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
-	save.addEventListener("click", saveData);
+	save.addEventListener("click", validate);
 });
